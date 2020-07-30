@@ -1,0 +1,891 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\newenvironment{Shaded}{}{}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifluatex
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+
+\author{}
+\date{}
+
+\begin{document}
+
+\hypertarget{header-n0}{%
+\section{基于seq2seq with attention model 的英中翻译}\label{header-n0}}
+
+\tableofcontents
+
+\hypertarget{header-n8}{%
+\subsection{1.项目背景}\label{header-n8}}
+
+语言是人类沟通的重要手段，有时候在阅读外语或者听外语时，可能会存在一些因语言不通而造成的理解问题。
+
+在观看外语视频的时候，某些视频因为缺少字幕，而造成了理解上的困难。为此，我希望写一个视频的语音识别+机器翻译的程序来实现再看外文视频时能够自动加中文字幕的功能。
+
+而机器翻译就是其中的一环，我的机器翻译学习从这里开始。
+
+就目前而言，最新的主流的机器翻译方案就是transform和bert. 模型的发展是由
+基本的seq2seq、seq2seq with attention、transform、bert
+这四个发展阶段，他们的架构越来越复杂，参数数量也越来越多，但是这并不代表任何情况下后面的复杂的模型都比前面的简单的模型好，因为这是需要数据做为支撑，如果本身数据量很小，而去选择参数非常多的模型，也很难发挥其模型的实力。同时，后面的模型也是由前面的一步步改进而来，而非一步到位的，学习、理解前面的简单的模型，对于学习理解后面的模型也有很大的帮助。
+
+\hypertarget{header-n13}{%
+\subsection{2.解决思路}\label{header-n13}}
+
+\hypertarget{header-n14}{%
+\subsubsection{2.1 问题分析}\label{header-n14}}
+
+机器翻译就是从文本到文本的一种典型的模型，我们接受一段文本，通过一个模型，产生输出一段文本，这个模型理论上来说可以是任意的，但是普通的RNN网络具有不能处理输入输出长度不相等的问题，而另一种RNN的变种:seq2seq
+model就可以用来解决这个问题。
+
+这里我们采用seq2seq with attention的模型。
+
+\hypertarget{header-n17}{%
+\subsubsection{2.2 seq2seq with attention详解}\label{header-n17}}
+
+\hypertarget{header-n18}{%
+\paragraph{2.2.1 我们为什么需要seq2seq}\label{header-n18}}
+
+下图是传统的RNN结构
+
+\begin{figure}
+\centering
+\includegraphics{D:/Desktop/进展汇报/创2期末文档/RNN.jpg}
+\caption{}
+\end{figure}
+
+图1.传统RNN
+
+其中
+
+\( h_i=f(Ux_i+Wh_{i-1}+b) \)
+
+\(y_i=softmax(Vh_i+c)\)
+
+其参数U,W,V都是共享的
+
+我们可以看到，Xi与Yi是一
+一对应的，也就是说，传统的RNN的输入与输出必须是等长的,即N to N。
+
+但这在一些条件下并不符合要求，比如在接下来的机器翻译中，源语言与目标语言的句子长度往往不相等，那么我们就需要一种输入与输出长度可以不相等的网络结构。
+
+Seq2seq就是为解决这个问题而诞生的。
+
+\hypertarget{header-n29}{%
+\paragraph{2.2.2 什么是seq2seq}\label{header-n29}}
+
+简单来看，seq2seq的大体框架就是下面这样\\
+\includegraphics{https://gitee.com/in_the_wind_ghx/markdownImageUpload/raw/master/img/seq2seq.png}
+
+图2.seq2seq大体框架
+
+下图展示了基本的seq2seq网络结构；\\
+\includegraphics{https://gitee.com/in_the_wind_ghx/markdownImageUpload/raw/master/img/seq2seqInTotal.png}
+
+图3.seq2seq基本结构
+
+实际上，seq2seq是RNN的一种变种网络，它是由两个RNN(左边的encoder和右边的decoder都是一个RNN)拼接而成。通过encode和decode网络来实现不定长序列之间的映射。实际实现中，RNN一般选用LSTM或者是GRU网络来一定程度上缓减长期记忆遗失的问题，但是这还不够，这也是后面attention机制被应用在seq2seq网络的原因。
+
+虽然两个RNN各自的输入输出仍是相同。我们可以先通过encode网络生成input的语义向量，作为h0输入到decode中。
+
+Decode网络的输入的长度即为整个网络的输出，与网络的输入的长度无关，这样就可以有一个长度的input到另一个长度的output的映射关系。就实现了N
+to M的映射。
+
+我们可以看到，encode的隐藏层的输出都被丢掉，只有最后一层的输出被传给了decode，随着反复的向前传播、反向传播，input对output的影响会越来越小。这也是seq2seq网络的一个问题。
+
+事实上，正因为Seq2seq是两个RNN的拼接，因此，基本的seq2seq也存在着基本RNN存在的问题-\/-\/-\/-长期记忆的遗失（类似于梯度爆炸或消失）。\\
+虽然在RNN中也有LSTM或GRU的解决思路，但是效果还不够好，于是，有人提出了带有attention机制的seq2seq网络解决这一问题。
+
+\hypertarget{header-n39}{%
+\paragraph{2.2.3 带有注意力机制的seq2seq}\label{header-n39}}
+
+下图展示了带有注意力机制的seq2seq网络结构\\
+\includegraphics{https://gitee.com/in_the_wind_ghx/markdownImageUpload/raw/master/img/alignmentVector.png}
+
+图4.摘自 Effective Approaches to Attention-based Neural Machine Translation
+
+该图摘自2015年提出了Luong Attention的论文\textbf{Effective Approaches to
+Attention-based Neural Machine
+Translation}，这是作者用于说明该网络的一个示例。
+
+但是我们直接看这个图，恐怕还是有点难看懂。因此，在看这个图之前，我需要说明一些预备知识。比较重要的内容有两个:
+
+1.The alignment vector(即图中的 attention weights)
+
+\begin{figure}
+\centering
+\includegraphics{https://gitee.com/in_the_wind_ghx/markdownImageUpload/raw/master/img/computeAlignmentVector.png}
+\caption{}
+\end{figure}
+
+图5.The Alignment Vector
+
+\begin{quote}
+The alignment
+vector是一个与输入源序列相同长度的的向量，它是在decoder的每个时间步里计算而来。\\
+这个向量的每个值就是对应的源输入序列的score(或者说是可能性)。
+\end{quote}
+
+那么alignment是如何产生的?\\
+我们看下面两个计算公式
+
+对于\(a_t(s)\)的计算，我相信如果比较敏感的话，就能一下子看出来，这实际上就是对score求softmax，也很好理解，就是将得分(权重)最高的选出来。\\
+\includegraphics{https://gitee.com/in_the_wind_ghx/markdownImageUpload/raw/master/img/contextVector.png}
+
+图6.The Alignment Vector计算方式
+
+下图是Luong给出的三种计算score的方式。实际上除了Luong的attention之外，还有另一种attention:Bahdanau
+attention，不过他们大体上是很相似的，其中一处差别就是，Bahdanau
+attention 提倡只使用concat计算score而不使用其他的计算方式。
+
+\begin{figure}
+\centering
+\includegraphics{https://gitee.com/in_the_wind_ghx/markdownImageUpload/raw/master/img/score.png}
+\caption{}
+\end{figure}
+
+图7.score计算方式
+
+2.The context vector(上下文向量)
+
+\begin{figure}
+\centering
+\includegraphics{https://gitee.com/in_the_wind_ghx/markdownImageUpload/raw/master/img/seq2seqWithAttentionStep2.webp}
+\caption{}
+\end{figure}
+
+图8.The context vector
+
+\begin{quote}
+The context vector
+是我们用来计算最后的decoder的输出的，具体怎样计算，我会在后面给出说明。\\
+\textless br\textgreater{} 它是encoder网络输出结果的加权平均。
+\end{quote}
+
+其具体计算的方式即为 encode的输出与alignment
+vector做点积运算，即可得到context vector
+
+\(c_i=\sum_{j=1}^{T_x}a_{ij}h_j\)
+
+以上两个部分就是attention机制的核心，使用attention，简单来说，就是为了得到这个context
+vector。
+
+当然如果没有attention，也可以认为有context vector，但是那个context
+vector只是基于ecoder的最后一个hidden state而与其他无关，同时这个context
+vector都是相同的，这代表所有的输入对于输出的影响是相同的，我们可以说这是没有注意到某些关键的元素的，效果并不好。attention则是通过加权平均，给予每个输入不同的权重，让机器从数据中学习，来获取某些关键的点，最后获得一个相对比较好的语义抽象-\/-context
+vector.
+
+\hypertarget{header-n64}{%
+\paragraph{2.2.4 seq2seq with attention网络全貌}\label{header-n64}}
+
+\begin{figure}
+\centering
+\includegraphics{https://gitee.com/in_the_wind_ghx/markdownImageUpload/raw/master/img/decoder.png}
+\caption{}
+\end{figure}
+
+图9.seq2seq attention 整体架构
+
+左侧为Encoder，右侧为Decoder，中间为Attention。
+
+Encoder一般是由一层embedding层和多层RNN(一般选用LSTM或GRU)层组成，Decoder层也同样如此。
+
+一个时间步的流程如下:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  从左边Encoder开始，输入转换为word embedding,
+  进入LSTM。LSTM会在每一个时间点上输出hidden
+  states。如图中的h1,h2,...,h8。
+\item
+  接下来进入右侧Decoder，输入为中文的句子，以及从encoder最后一个hidden
+  state: h8。LSTM的是输出是一个hidden state (cell state不需要使用)。
+\item
+  随后，Decoder的hidden state与Encoder所有的hidden
+  states作为输入，放入Attention模块开始计算一个context
+  vector，就是在2.2.3节我们提到的计算方法。
+\end{enumerate}
+
+\begin{figure}
+\centering
+\includegraphics{https://gitee.com/in_the_wind_ghx/markdownImageUpload/raw/master/img/encoder.png}
+\caption{}
+\end{figure}
+
+图10.seq2seq attention 第2个时间步
+
+我们来到第2个时间步:之前的context
+vector可以作为输入和目标的单词串起来作为RNN（即LSTM）的输入。之后又回到一个hidden
+state。以此循环。也就是说，decoder每走过一时间步，就会在context
+vector产生一个值，并会与目标串连接作为下一个时间步decoder的输入，直到走到最后的时间步。
+
+走完了所有的时间步后，context也同步地更新完成。这时候，\(\hat{s_t}=tanh(W_c[c_t;s_t])\)，即将context
+vector和decoder的hidden
+states连接；通过通过\(p(y_t|y<t,x)=softmax(W_s\hat{s_t})\)来计算最后的输出概率
+
+\hypertarget{header-n83}{%
+\subsection{3.项目实现}\label{header-n83}}
+
+\hypertarget{header-n84}{%
+\subsubsection{3.1 数据处理}\label{header-n84}}
+
+\hypertarget{header-n85}{%
+\paragraph{3.1.1数据集准备}\label{header-n85}}
+
+\href{http://www.manythings.org/anki/cmn-eng.zip}{点击这里下载数据集}
+
+这里我们选用的是'http://www.manythings.org/anki/'上的中英翻译的数据集，这个数据集是比较小的，只有20000条的数据，文件不到3MB，但是我们这次主要还是为了学习，所以并不是特别看重这个效果，要知道，谷歌训练自己的谷歌翻译的数据集都是TB级别的。
+
+\hypertarget{header-n88}{%
+\paragraph{3.1.2 提取文本}\label{header-n88}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ loadFile(filename}\OperatorTok{=}\NormalTok{path\_to\_file):}
+    \ControlFlowTok{with} \BuiltInTok{open}\NormalTok{(filename, }\StringTok{\textquotesingle{}r\textquotesingle{}}\NormalTok{, encoding}\OperatorTok{=}\StringTok{\textquotesingle{}utf8\textquotesingle{}}\NormalTok{) }\ImportTok{as}\NormalTok{ f:}
+\NormalTok{        raw\_data }\OperatorTok{=}\NormalTok{ f.readlines()}
+    \ControlFlowTok{return}\NormalTok{ raw\_data}
+\end{Highlighting}
+\end{Shaded}
+
+我们来看一下数据的格式是怎样的:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(raw\_data[:}\DecValTok{10}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+输出结果:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{[}\StringTok{\textquotesingle{}Hi.}\CharTok{\textbackslash{}t}\StringTok{嗨。}\CharTok{\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}Hi.}\CharTok{\textbackslash{}t}\StringTok{你好。}\CharTok{\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}Run.}\CharTok{\textbackslash{}t}\StringTok{你用跑的。}\CharTok{\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}Wait!}\CharTok{\textbackslash{}t}\StringTok{等等！}\CharTok{\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}Hello!}\CharTok{\textbackslash{}t}\StringTok{你好。}\CharTok{\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}I try.}\CharTok{\textbackslash{}t}\StringTok{让我来。}\CharTok{\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}I won!}\CharTok{\textbackslash{}t}\StringTok{我赢了。}\CharTok{\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}Oh no!}\CharTok{\textbackslash{}t}\StringTok{不会吧。}\CharTok{\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}Cheers!}\CharTok{\textbackslash{}t}\StringTok{乾杯!}\CharTok{\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}He ran.}\CharTok{\textbackslash{}t}\StringTok{他跑了。}\CharTok{\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{header-n95}{%
+\paragraph{3.1.3 分词}\label{header-n95}}
+
+我们要对英文和中文进行分词，如果是英文，不需要特别处理，直接按照空格分割即可；对于中文，我们通过分词工具jieba来实现。那么如何判断一个句子是英文还是中文？我们可以通过Unicode编码来判断，中文的Unicode编码是在4e00到9fff之间的，如果句子中出现了这个编码区间内的字符，即认为该句子是中文，并采用中文的处理方式。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ check\_contain\_chinese(w):}
+\NormalTok{    flag }\OperatorTok{=} \VariableTok{True}
+\NormalTok{    flagtop}\OperatorTok{=}\VariableTok{False}
+    \ControlFlowTok{for}\NormalTok{ check\_str }\KeywordTok{in}\NormalTok{ w:}
+        \ControlFlowTok{for}\NormalTok{ ch }\KeywordTok{in}\NormalTok{ check\_str:}
+            \ControlFlowTok{if} \StringTok{u\textquotesingle{}}\CharTok{\textbackslash{}u4e00}\StringTok{\textquotesingle{}} \OperatorTok{\textgreater{}=}\NormalTok{ ch }\KeywordTok{or}\NormalTok{ ch }\OperatorTok{\textgreater{}=} \StringTok{u\textquotesingle{}}\CharTok{\textbackslash{}u9fff}\StringTok{\textquotesingle{}}\NormalTok{:}
+\NormalTok{                flag }\OperatorTok{=}  \VariableTok{False}
+\NormalTok{                flagtop}\OperatorTok{=}\VariableTok{False}
+                \ControlFlowTok{break}
+        \ControlFlowTok{if} \KeywordTok{not}\NormalTok{ flagtop :}
+                \ControlFlowTok{break}
+    \ControlFlowTok{return}\NormalTok{ flag}
+
+\KeywordTok{def}\NormalTok{ preprocess\_chinese(w):}
+\NormalTok{    line}\OperatorTok{=}\NormalTok{jieba.cut(w)}
+\NormalTok{    w}\OperatorTok{=}\NormalTok{[x }\ControlFlowTok{for}\NormalTok{ x }\KeywordTok{in}\NormalTok{ line]}
+\NormalTok{    item}\OperatorTok{=}\StringTok{\textquotesingle{} \textquotesingle{}}\NormalTok{.join(w)}
+    \ControlFlowTok{return}\NormalTok{ item}
+    
+\KeywordTok{def}\NormalTok{ preprocess\_sentence(w):}
+\NormalTok{    w }\OperatorTok{=}\NormalTok{ re.sub(}\VerbatimStringTok{r"([?.!,¿])"}\NormalTok{, }\VerbatimStringTok{r" \textbackslash{}1 "}\NormalTok{, w)}\CommentTok{\#在单词与跟在其后的标点符号之间插入一个空格}
+\NormalTok{    w }\OperatorTok{=}\NormalTok{ re.sub(}\VerbatimStringTok{r\textquotesingle{}[" "]+\textquotesingle{}}\NormalTok{, }\StringTok{" "}\NormalTok{, w)}\CommentTok{\#多个空格合并为一个空格}
+    \ControlFlowTok{if}\NormalTok{ check\_contain\_chinese(w):}
+\NormalTok{        w}\OperatorTok{=}\NormalTok{preprocess\_chinese(w)}
+    \ControlFlowTok{else}\NormalTok{:}
+\NormalTok{        w }\OperatorTok{=}\NormalTok{ w.lower().strip()}\CommentTok{\#因为大小写是不影响含义的，我们不能说大写的ME与小写的me的意思不同，							  \#因此全部转化为小写}
+\NormalTok{    w }\OperatorTok{=} \StringTok{\textquotesingle{}\textless{}start\textgreater{} \textquotesingle{}} \OperatorTok{+}\NormalTok{ w }\OperatorTok{+} \StringTok{\textquotesingle{} \textless{}end\textgreater{}\textquotesingle{}}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{header-n98}{%
+\paragraph{3.1.4 提取中英文}\label{header-n98}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ create\_dataset(path, num\_examples):}
+\NormalTok{    lines }\OperatorTok{=}\NormalTok{ io.}\BuiltInTok{open}\NormalTok{(path, encoding}\OperatorTok{=}\StringTok{\textquotesingle{}UTF{-}8\textquotesingle{}}\NormalTok{).read().strip().split(}\StringTok{\textquotesingle{}}\CharTok{\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{)}
+
+\NormalTok{    word\_pairs }\OperatorTok{=}\NormalTok{ [[preprocess\_sentence(w) }\ControlFlowTok{for}\NormalTok{ w }\KeywordTok{in}\NormalTok{ l.split(}\StringTok{\textquotesingle{}}\CharTok{\textbackslash{}t}\StringTok{\textquotesingle{}}\NormalTok{)]  }\ControlFlowTok{for}\NormalTok{ l }\KeywordTok{in}\NormalTok{ lines[:num\_examples]]}
+
+    \ControlFlowTok{return} \BuiltInTok{zip}\NormalTok{(}\OperatorTok{*}\NormalTok{word\_pairs)}
+\end{Highlighting}
+\end{Shaded}
+
+我们看一下现在English和Chinese的最后一个结果是怎样的:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{en,ch }\OperatorTok{=}\NormalTok{ create\_dataset(path\_to\_file, }\VariableTok{None}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(en[}\OperatorTok{{-}}\DecValTok{1}\NormalTok{])}
+\BuiltInTok{print}\NormalTok{(ch[}\OperatorTok{{-}}\DecValTok{1}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+输出:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{\textless{}}\NormalTok{start}\OperatorTok{\textgreater{}} \ControlFlowTok{if}\NormalTok{ a person has }\KeywordTok{not}\NormalTok{ had a chance to acquire his target language by the time he}\StringTok{\textquotesingle{}s an adult , he\textquotesingle{}}\NormalTok{s unlikely to be able to reach native speaker level }\KeywordTok{in}\NormalTok{ that language . }\OperatorTok{\textless{}}\NormalTok{end}\OperatorTok{\textgreater{}}
+\OperatorTok{\textless{}}\NormalTok{start}\OperatorTok{\textgreater{}}\NormalTok{ 如果 一個 人 在 成人 前 沒 有 機會習 得 目標 語言 ， 他 對 該 語言 的 認識 達 到 母語者 程度 的 機會 是 相當 小 的 。 }\OperatorTok{\textless{}}\NormalTok{end}\OperatorTok{\textgreater{}}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{header-n104}{%
+\paragraph{3.1.5文本序列化}\label{header-n104}}
+
+我们通过TensorFlow.keras中的Tokenizer类来帮助我们完成这一工作，这里
+\texttt{fit\_on\_texts}用来对输入的文本产生一个字典，这个字典是一个文字到整数的映射;\texttt{texts\_to\_sequences}将输入的文本按照刚刚生成的字典将文本的文字转化为一个个数字，生成整数的tensor；\texttt{pad\_sequences}
+这里的\texttt{padding=\textquotesingle{}post\textquotesingle{}}是让刚刚产生的所有tensor扩展为相同的长度(即原本最长的tensor的长度)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ tokenize(lang):}
+\NormalTok{    lang\_tokenizer }\OperatorTok{=}\NormalTok{ tf.keras.preprocessing.text.Tokenizer(}
+\NormalTok{      filters}\OperatorTok{=}\StringTok{\textquotesingle{}\textquotesingle{}}\NormalTok{)}
+\NormalTok{    lang\_tokenizer.fit\_on\_texts(lang)}
+
+\NormalTok{    tensor }\OperatorTok{=}\NormalTok{ lang\_tokenizer.texts\_to\_sequences(lang)}
+
+\NormalTok{    tensor }\OperatorTok{=}\NormalTok{ tf.keras.preprocessing.sequence.pad\_sequences(tensor,}
+\NormalTok{                                                         padding}\OperatorTok{=}\StringTok{\textquotesingle{}post\textquotesingle{}}\NormalTok{)}
+
+    \ControlFlowTok{return}\NormalTok{ tensor, lang\_tokenizer}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{header-n108}{%
+\paragraph{3.1.6加载清理好的数据集}\label{header-n108}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ load\_dataset(path, num\_examples}\OperatorTok{=}\VariableTok{None}\NormalTok{):}
+    \CommentTok{\# 创建清理过的输入输出对}
+\NormalTok{    inp\_lang, targ\_lang }\OperatorTok{=}\NormalTok{ create\_dataset(path, num\_examples)}
+
+\NormalTok{    input\_tensor, inp\_lang\_tokenizer }\OperatorTok{=}\NormalTok{ tokenize(inp\_lang)}
+\NormalTok{    target\_tensor, targ\_lang\_tokenizer }\OperatorTok{=}\NormalTok{ tokenize(targ\_lang)}
+
+    \ControlFlowTok{return}\NormalTok{ input\_tensor, target\_tensor, inp\_lang\_tokenizer, targ\_lang\_tokenizer}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# 尝试实验不同大小的数据集}
+\NormalTok{num\_examples }\OperatorTok{=} \DecValTok{20133}
+\NormalTok{input\_tensor, target\_tensor, inp\_lang, targ\_lang }\OperatorTok{=}\NormalTok{ load\_dataset(path\_to\_file, num\_examples)}
+
+\CommentTok{\# 计算目标张量的最大长度 （max\_length）}
+\NormalTok{max\_length\_targ, max\_length\_inp }\OperatorTok{=}\NormalTok{ max\_length(target\_tensor), max\_length(input\_tensor)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{header-n111}{%
+\paragraph{3.1.7划分训练集与验证集}\label{header-n111}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# 采用 80 {-} 20 的比例切分训练集和验证集}
+\NormalTok{input\_tensor\_train, input\_tensor\_val, target\_tensor\_train, target\_tensor\_val }\OperatorTok{=}\NormalTok{ train\_test\_split(input\_tensor, target\_tensor, test\_size}\OperatorTok{=}\FloatTok{0.2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{header-n113}{%
+\paragraph{3.1.8设置训练结构}\label{header-n113}}
+
+这里可以修改每个buffer的大小、每个batch的大小、embedding层的维度，和输入的unit数量
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{BUFFER\_SIZE }\OperatorTok{=} \BuiltInTok{len}\NormalTok{(input\_tensor\_train)}
+\NormalTok{BATCH\_SIZE }\OperatorTok{=} \DecValTok{64}
+\NormalTok{steps\_per\_epoch }\OperatorTok{=} \BuiltInTok{len}\NormalTok{(input\_tensor\_train)}\OperatorTok{//}\NormalTok{BATCH\_SIZE}
+\NormalTok{embedding\_dim }\OperatorTok{=} \DecValTok{256}
+\NormalTok{units }\OperatorTok{=} \DecValTok{1024}
+\NormalTok{vocab\_inp\_size }\OperatorTok{=} \BuiltInTok{len}\NormalTok{(inp\_lang.word\_index)}\OperatorTok{+}\DecValTok{1}
+\NormalTok{vocab\_tar\_size }\OperatorTok{=} \BuiltInTok{len}\NormalTok{(targ\_lang.word\_index)}\OperatorTok{+}\DecValTok{1}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{header-n116}{%
+\paragraph{3.1.9处理dataset}\label{header-n116}}
+
+我们通过\texttt{tf.data.Dataset}创建TensorFlow的数据集格式，并打乱、按batch切分数据集
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dataset }\OperatorTok{=}\NormalTok{ tf.data.Dataset.from\_tensor\_slices((input\_tensor\_train, target\_tensor\_train)).shuffle(BUFFER\_SIZE)}
+\NormalTok{dataset }\OperatorTok{=}\NormalTok{ dataset.batch(BATCH\_SIZE, drop\_remainder}\OperatorTok{=}\VariableTok{True}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{header-n119}{%
+\subsubsection{3.2网络结构}\label{header-n119}}
+
+\hypertarget{header-n120}{%
+\paragraph{3.2.1 Encoder层}\label{header-n120}}
+
+\begin{figure}
+\centering
+\includegraphics{https://gitee.com/in_the_wind_ghx/markdownImageUpload/raw/master/img/UnstandSeq2seqWithAttention.png}
+\caption{}
+\end{figure}
+
+图11.encoder网络结构
+
+Encoder由一层embedding层以及一层或多层RNN组成，这在前面已经有过说明。这里，为了减少运算量，我们的RNN选用一层GRU。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{class}\NormalTok{ Encoder(tf.keras.Model):}
+    \KeywordTok{def} \FunctionTok{\_\_init\_\_}\NormalTok{(}\VariableTok{self}\NormalTok{, vocab\_size, embedding\_dim, enc\_units, batch\_sz):}
+        \BuiltInTok{super}\NormalTok{(Encoder, }\VariableTok{self}\NormalTok{).}\FunctionTok{\_\_init\_\_}\NormalTok{()}
+        \VariableTok{self}\NormalTok{.batch\_sz }\OperatorTok{=}\NormalTok{ batch\_sz}
+        \VariableTok{self}\NormalTok{.enc\_units }\OperatorTok{=}\NormalTok{ enc\_units}
+        \VariableTok{self}\NormalTok{.embedding }\OperatorTok{=}\NormalTok{ tf.keras.layers.Embedding(vocab\_size, embedding\_dim)}
+        \VariableTok{self}\NormalTok{.gru }\OperatorTok{=}\NormalTok{ tf.keras.layers.GRU(}\VariableTok{self}\NormalTok{.enc\_units,}
+\NormalTok{                                       return\_sequences}\OperatorTok{=}\VariableTok{True}\NormalTok{,}
+\NormalTok{                                       return\_state}\OperatorTok{=}\VariableTok{True}\NormalTok{,}
+\NormalTok{                                       recurrent\_initializer}\OperatorTok{=}\StringTok{\textquotesingle{}glorot\_uniform\textquotesingle{}}\NormalTok{)}
+
+    \KeywordTok{def}\NormalTok{ call(}\VariableTok{self}\NormalTok{, x, hidden):}
+\NormalTok{        x }\OperatorTok{=} \VariableTok{self}\NormalTok{.embedding(x)}
+\NormalTok{        output, state }\OperatorTok{=} \VariableTok{self}\NormalTok{.gru(x, initial\_state }\OperatorTok{=}\NormalTok{ hidden)}
+        \ControlFlowTok{return}\NormalTok{ output, state}
+
+    \KeywordTok{def}\NormalTok{ initialize\_hidden\_state(}\VariableTok{self}\NormalTok{):}
+        \ControlFlowTok{return}\NormalTok{ tf.zeros((}\VariableTok{self}\NormalTok{.batch\_sz, }\VariableTok{self}\NormalTok{.enc\_units))}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{header-n125}{%
+\paragraph{3.2.2 Attention层}\label{header-n125}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{class}\NormalTok{ BahdanauAttention(tf.keras.layers.Layer):}
+    \KeywordTok{def} \FunctionTok{\_\_init\_\_}\NormalTok{(}\VariableTok{self}\NormalTok{, units):}
+        \BuiltInTok{super}\NormalTok{(BahdanauAttention, }\VariableTok{self}\NormalTok{).}\FunctionTok{\_\_init\_\_}\NormalTok{()}
+        \VariableTok{self}\NormalTok{.W1 }\OperatorTok{=}\NormalTok{ tf.keras.layers.Dense(units)}
+        \VariableTok{self}\NormalTok{.W2 }\OperatorTok{=}\NormalTok{ tf.keras.layers.Dense(units)}
+        \VariableTok{self}\NormalTok{.V }\OperatorTok{=}\NormalTok{ tf.keras.layers.Dense(}\DecValTok{1}\NormalTok{)}
+
+    \KeywordTok{def}\NormalTok{ call(}\VariableTok{self}\NormalTok{, query, values):}
+        \CommentTok{\# 隐藏层的形状 == （批大小，隐藏层大小）}
+        \CommentTok{\# hidden\_with\_time\_axis 的形状 == （批大小，1，隐藏层大小）}
+        \CommentTok{\# 这样做是为了执行加法以计算分数}
+\NormalTok{        hidden\_with\_time\_axis }\OperatorTok{=}\NormalTok{ tf.expand\_dims(query, }\DecValTok{1}\NormalTok{)}
+
+        \CommentTok{\# 分数的形状 == （批大小，最大长度，1）}
+        \CommentTok{\# 我们在最后一个轴上得到 1， 因为我们把分数应用于 self.V}
+        \CommentTok{\# 在应用 self.V 之前，张量的形状是（批大小，最大长度，单位）}
+\NormalTok{        score }\OperatorTok{=} \VariableTok{self}\NormalTok{.V(tf.nn.tanh(}
+            \VariableTok{self}\NormalTok{.W1(values) }\OperatorTok{+} \VariableTok{self}\NormalTok{.W2(hidden\_with\_time\_axis)))}
+
+        \CommentTok{\# 注意力权重 （attention\_weights） 的形状 == （批大小，最大长度，1）}
+\NormalTok{        attention\_weights }\OperatorTok{=}\NormalTok{ tf.nn.softmax(score, axis}\OperatorTok{=}\DecValTok{1}\NormalTok{)}
+
+        \CommentTok{\# 上下文向量 （context\_vector） 求和之后的形状 == （批大小，隐藏层大小）}
+\NormalTok{        context\_vector }\OperatorTok{=}\NormalTok{ attention\_weights }\OperatorTok{*}\NormalTok{ values}
+\NormalTok{        context\_vector }\OperatorTok{=}\NormalTok{ tf.reduce\_sum(context\_vector, axis}\OperatorTok{=}\DecValTok{1}\NormalTok{)}
+
+        \ControlFlowTok{return}\NormalTok{ context\_vector, attention\_weights}
+\end{Highlighting}
+\end{Shaded}
+
+我们创建attention层,设置输入单元为10
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{attention\_layer }\OperatorTok{=}\NormalTok{ BahdanauAttention(}\DecValTok{10}\NormalTok{)}
+\NormalTok{attention\_result, attention\_weights }\OperatorTok{=}\NormalTok{ attention\_layer(sample\_hidden, sample\_output)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{header-n129}{%
+\paragraph{3.2.3 Decoder层}\label{header-n129}}
+
+\begin{figure}
+\centering
+\includegraphics{https://gitee.com/in_the_wind_ghx/markdownImageUpload/raw/master/img/testResult2.png}
+\caption{}
+\end{figure}
+
+图12.Decoder网络结构
+
+一个Decoder层由一层embedding层、多层RNN(LSTM/GRU)、一个全连接层(dense)、attention层、一个softmax层组成。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\KeywordTok{class}\NormalTok{ Decoder(tf.keras.Model):}
+    \KeywordTok{def} \FunctionTok{\_\_init\_\_}\NormalTok{(}\VariableTok{self}\NormalTok{, vocab\_size, embedding\_dim, dec\_units, batch\_sz):}
+        \BuiltInTok{super}\NormalTok{(Decoder, }\VariableTok{self}\NormalTok{).}\FunctionTok{\_\_init\_\_}\NormalTok{()}
+        \VariableTok{self}\NormalTok{.batch\_sz }\OperatorTok{=}\NormalTok{ batch\_sz}
+        \VariableTok{self}\NormalTok{.dec\_units }\OperatorTok{=}\NormalTok{ dec\_units}
+        \VariableTok{self}\NormalTok{.embedding }\OperatorTok{=}\NormalTok{ tf.keras.layers.Embedding(vocab\_size, embedding\_dim)}
+        \VariableTok{self}\NormalTok{.gru }\OperatorTok{=}\NormalTok{ tf.keras.layers.GRU(}\VariableTok{self}\NormalTok{.dec\_units,}
+\NormalTok{                                       return\_sequences}\OperatorTok{=}\VariableTok{True}\NormalTok{,}
+\NormalTok{                                       return\_state}\OperatorTok{=}\VariableTok{True}\NormalTok{,}
+\NormalTok{                                       recurrent\_initializer}\OperatorTok{=}\StringTok{\textquotesingle{}glorot\_uniform\textquotesingle{}}\NormalTok{)}
+        \VariableTok{self}\NormalTok{.fc }\OperatorTok{=}\NormalTok{ tf.keras.layers.Dense(vocab\_size)}
+
+        \CommentTok{\# 用于注意力}
+        \VariableTok{self}\NormalTok{.attention }\OperatorTok{=}\NormalTok{ BahdanauAttention(}\VariableTok{self}\NormalTok{.dec\_units)}
+
+    \KeywordTok{def}\NormalTok{ call(}\VariableTok{self}\NormalTok{, x, hidden, enc\_output):}
+        \CommentTok{\# 编码器输出 （enc\_output） 的形状 == （批大小，最大长度，隐藏层大小）}
+\NormalTok{        context\_vector, attention\_weights }\OperatorTok{=} \VariableTok{self}\NormalTok{.attention(hidden, enc\_output)}
+
+        \CommentTok{\# x 在通过嵌入层后的形状 == （批大小，1，嵌入维度）}
+\NormalTok{        x }\OperatorTok{=} \VariableTok{self}\NormalTok{.embedding(x)}
+
+        \CommentTok{\# x 在拼接 （concatenation） 后的形状 == （批大小，1，嵌入维度 + 隐藏层大小）}
+\NormalTok{        x }\OperatorTok{=}\NormalTok{ tf.concat([tf.expand\_dims(context\_vector, }\DecValTok{1}\NormalTok{), x], axis}\OperatorTok{={-}}\DecValTok{1}\NormalTok{)}
+
+        \CommentTok{\# 将合并后的向量传送到 GRU}
+\NormalTok{        output, state }\OperatorTok{=} \VariableTok{self}\NormalTok{.gru(x)}
+
+        \CommentTok{\# 输出的形状 == （批大小 * 1，隐藏层大小）}
+\NormalTok{        output }\OperatorTok{=}\NormalTok{ tf.reshape(output, (}\OperatorTok{{-}}\DecValTok{1}\NormalTok{, output.shape[}\DecValTok{2}\NormalTok{]))}
+
+        \CommentTok{\# 输出的形状 == （批大小，vocab）}
+\NormalTok{        x }\OperatorTok{=} \VariableTok{self}\NormalTok{.fc(output)}
+
+        \ControlFlowTok{return}\NormalTok{ x, state, attention\_weights}
+\end{Highlighting}
+\end{Shaded}
+
+像前面一样，我们创建decoder层
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{decoder }\OperatorTok{=}\NormalTok{ Decoder(vocab\_tar\_size, embedding\_dim, units, BATCH\_SIZE)}
+\end{Highlighting}
+\end{Shaded}
+
+至此，我们的网络结构的三个大组件，就像搭乐高积木那样，已经搭建完毕。
+
+\hypertarget{header-n138}{%
+\subsubsection{3.3 优化器与损失函数}\label{header-n138}}
+
+这里我们直接通过tensorflow提供的接口，使用Adam优化器和均方差的损失函数
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{optimizer }\OperatorTok{=}\NormalTok{ tf.keras.optimizers.Adam()}
+\NormalTok{loss\_object }\OperatorTok{=}\NormalTok{ tf.keras.losses.SparseCategoricalCrossentropy(}
+\NormalTok{    from\_logits}\OperatorTok{=}\VariableTok{True}\NormalTok{, reduction}\OperatorTok{=}\StringTok{\textquotesingle{}none\textquotesingle{}}\NormalTok{)}
+
+\KeywordTok{def}\NormalTok{ loss\_function(real, pred):}
+\NormalTok{    mask }\OperatorTok{=}\NormalTok{ tf.math.logical\_not(tf.math.equal(real, }\DecValTok{0}\NormalTok{))}
+\NormalTok{    loss\_ }\OperatorTok{=}\NormalTok{ loss\_object(real, pred)}
+
+\NormalTok{    mask }\OperatorTok{=}\NormalTok{ tf.cast(mask, dtype}\OperatorTok{=}\NormalTok{loss\_.dtype)}
+\NormalTok{    loss\_ }\OperatorTok{*=}\NormalTok{ mask}
+
+    \ControlFlowTok{return}\NormalTok{ tf.reduce\_mean(loss\_)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{header-n141}{%
+\subsubsection{3.4训练与评价}\label{header-n141}}
+
+定义训练函数:基本就是将输入传入encoder和decoder，计算损失，梯度下降
+
+在训练的过程中，我们使用了教师强制，你可能会问了，什么是教师强制？
+
+``教师强制''的概念是使用实际目标输出作为每个下一个输入，而不是使用解码器的猜测作为下一个输入。
+使用教师强制会导致其收敛更快。用一种比较直观的方式解释的话，那就是，最开始的时候，网络还什么都不会，这时候第一个时间步训练时，它的输出可能都是错的，那么我们拿一个错的输出作为下一个输入，显然也难以得到正确的结果。那么我们通过使用"教师强制"，将正确答案作为输入而不是错的答案，就可以帮助这个网络更快地学到这些潜在的东西。但并不是任何时候都要用"教师强制"，这里一篇文章表明，当使用受过训练的网络时，\href{http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.378.4095\&rep=rep1\&type=pdf}{可能会显示不稳定}。
+
+概括一下，就是对于完全没有训练过的网络，使用``教师强制''会帮助我们加快训练速度，但是如果这个网络已经训练地比较多了，那么我们就不该再使用``教师强制''。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\AttributeTok{@tf.function}
+\KeywordTok{def}\NormalTok{ train\_step(inp, targ, enc\_hidden):}
+\NormalTok{    loss }\OperatorTok{=} \DecValTok{0}
+
+    \ControlFlowTok{with}\NormalTok{ tf.GradientTape() }\ImportTok{as}\NormalTok{ tape:}
+\NormalTok{        enc\_output, enc\_hidden }\OperatorTok{=}\NormalTok{ encoder(inp, enc\_hidden)}
+
+\NormalTok{        dec\_hidden }\OperatorTok{=}\NormalTok{ enc\_hidden}
+
+\NormalTok{        dec\_input }\OperatorTok{=}\NormalTok{ tf.expand\_dims([targ\_lang.word\_index[}\StringTok{\textquotesingle{}\textless{}start\textgreater{}\textquotesingle{}}\NormalTok{]] }\OperatorTok{*}\NormalTok{ BATCH\_SIZE, }\DecValTok{1}\NormalTok{)}
+
+        \CommentTok{\# 教师强制 {-} 将目标词作为下一个输入}
+        \ControlFlowTok{for}\NormalTok{ t }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\DecValTok{1}\NormalTok{, targ.shape[}\DecValTok{1}\NormalTok{]):}
+          \CommentTok{\# 将编码器输出 （enc\_output） 传送至解码器}
+\NormalTok{            predictions, dec\_hidden, \_ }\OperatorTok{=}\NormalTok{ decoder(dec\_input, dec\_hidden, enc\_output)}
+
+\NormalTok{            loss }\OperatorTok{+=}\NormalTok{ loss\_function(targ[:, t], predictions)}
+
+            \CommentTok{\# 使用教师强制}
+\NormalTok{            dec\_input }\OperatorTok{=}\NormalTok{ tf.expand\_dims(targ[:, t], }\DecValTok{1}\NormalTok{)}
+
+\NormalTok{    batch\_loss }\OperatorTok{=}\NormalTok{ (loss }\OperatorTok{/} \BuiltInTok{int}\NormalTok{(targ.shape[}\DecValTok{1}\NormalTok{]))}
+
+\NormalTok{    variables }\OperatorTok{=}\NormalTok{ encoder.trainable\_variables }\OperatorTok{+}\NormalTok{ decoder.trainable\_variables}
+
+\NormalTok{    gradients }\OperatorTok{=}\NormalTok{ tape.gradient(loss, variables)}
+
+\NormalTok{    optimizer.apply\_gradients(}\BuiltInTok{zip}\NormalTok{(gradients, variables))}
+
+    \ControlFlowTok{return}\NormalTok{ batch\_loss}
+
+\end{Highlighting}
+\end{Shaded}
+
+我们训练10个epoch，每2个epoch保存一次模型，这样在下次训练时无需从头开始，接着上一次训练时保存的epoch接着训练即可。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\NormalTok{EPOCHS }\OperatorTok{=} \DecValTok{10}
+
+\ControlFlowTok{for}\NormalTok{ epoch }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(EPOCHS):}
+\NormalTok{    start }\OperatorTok{=}\NormalTok{ time.time()}
+
+\NormalTok{    enc\_hidden }\OperatorTok{=}\NormalTok{ encoder.initialize\_hidden\_state()}
+\NormalTok{    total\_loss }\OperatorTok{=} \DecValTok{0}
+
+    \ControlFlowTok{for}\NormalTok{ (batch, (inp, targ)) }\KeywordTok{in}\NormalTok{ tqdm(}\BuiltInTok{enumerate}\NormalTok{(dataset.take(steps\_per\_epoch))):}
+\NormalTok{        batch\_loss }\OperatorTok{=}\NormalTok{ train\_step(inp, targ, enc\_hidden)}
+\NormalTok{        total\_loss }\OperatorTok{+=}\NormalTok{ batch\_loss}
+
+        \ControlFlowTok{if}\NormalTok{ batch }\OperatorTok{\%} \DecValTok{100} \OperatorTok{==} \DecValTok{0}\NormalTok{:}
+            \BuiltInTok{print}\NormalTok{(}\StringTok{\textquotesingle{}Epoch }\SpecialCharTok{\{\}}\StringTok{ Batch }\SpecialCharTok{\{\}}\StringTok{ Loss }\SpecialCharTok{\{:.4f\}}\StringTok{\textquotesingle{}}\NormalTok{.}\BuiltInTok{format}\NormalTok{(epoch }\OperatorTok{+} \DecValTok{1}\NormalTok{,}
+\NormalTok{                                                     batch,}
+\NormalTok{                                                     batch\_loss.numpy()))}
+  \CommentTok{\# 每 2 个周期（epoch），保存（检查点）一次模型}
+    \ControlFlowTok{if}\NormalTok{ (epoch }\OperatorTok{+} \DecValTok{1}\NormalTok{) }\OperatorTok{\%} \DecValTok{2} \OperatorTok{==} \DecValTok{0}\NormalTok{:}
+\NormalTok{        checkpoint.save(file\_prefix }\OperatorTok{=}\NormalTok{ checkpoint\_prefix)}
+
+    \BuiltInTok{print}\NormalTok{(}\StringTok{\textquotesingle{}Epoch }\SpecialCharTok{\{\}}\StringTok{ Loss }\SpecialCharTok{\{:.4f\}}\StringTok{\textquotesingle{}}\NormalTok{.}\BuiltInTok{format}\NormalTok{(epoch }\OperatorTok{+} \DecValTok{1}\NormalTok{,}
+\NormalTok{                                      total\_loss }\OperatorTok{/}\NormalTok{ steps\_per\_epoch))}
+    \BuiltInTok{print}\NormalTok{(}\StringTok{\textquotesingle{}Time taken for 1 epoch }\SpecialCharTok{\{\}}\StringTok{ sec}\CharTok{\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{.}\BuiltInTok{format}\NormalTok{(time.time() }\OperatorTok{{-}}\NormalTok{ start))}
+
+\end{Highlighting}
+\end{Shaded}
+
+评价函数基本上与训练是一致的，只是这里不需要使用教师强制
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ evaluate(sentence):}
+\NormalTok{    attention\_plot }\OperatorTok{=}\NormalTok{ np.zeros((max\_length\_targ, max\_length\_inp))}
+
+\NormalTok{    sentence }\OperatorTok{=}\NormalTok{ preprocess\_sentence(sentence)}
+    \BuiltInTok{print}\NormalTok{(i }\ControlFlowTok{for}\NormalTok{ i }\KeywordTok{in}\NormalTok{ sentence.split(}\StringTok{" "}\NormalTok{))}
+\NormalTok{    inputs }\OperatorTok{=}\NormalTok{ [inp\_lang.word\_index[i] }
+              \ControlFlowTok{for}\NormalTok{ i }\KeywordTok{in}\NormalTok{ sentence.split(}\StringTok{\textquotesingle{} \textquotesingle{}}\NormalTok{)]}
+\NormalTok{    inputs }\OperatorTok{=}\NormalTok{ tf.keras.preprocessing.sequence.pad\_sequences([inputs],}
+\NormalTok{                                                           maxlen}\OperatorTok{=}\NormalTok{max\_length\_inp,}
+\NormalTok{                                                           padding}\OperatorTok{=}\StringTok{\textquotesingle{}post\textquotesingle{}}\NormalTok{)}
+\NormalTok{    inputs }\OperatorTok{=}\NormalTok{ tf.convert\_to\_tensor(inputs)}
+
+\NormalTok{    result }\OperatorTok{=} \StringTok{\textquotesingle{}\textquotesingle{}}
+
+\NormalTok{    hidden }\OperatorTok{=}\NormalTok{ [tf.zeros((}\DecValTok{1}\NormalTok{, units))]}
+\NormalTok{    enc\_out, enc\_hidden }\OperatorTok{=}\NormalTok{ encoder(inputs, hidden)}
+
+\NormalTok{    dec\_hidden }\OperatorTok{=}\NormalTok{ enc\_hidden}
+\NormalTok{    dec\_input }\OperatorTok{=}\NormalTok{ tf.expand\_dims([targ\_lang.word\_index[}\StringTok{\textquotesingle{}\textless{}start\textgreater{}\textquotesingle{}}\NormalTok{]], }\DecValTok{0}\NormalTok{)}
+
+    \ControlFlowTok{for}\NormalTok{ t }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(max\_length\_targ):}
+\NormalTok{        predictions, dec\_hidden, attention\_weights }\OperatorTok{=}\NormalTok{ decoder(dec\_input,}
+\NormalTok{                                                             dec\_hidden,}
+\NormalTok{                                                             enc\_out)}
+
+        \CommentTok{\# 存储注意力权重以便后面制图}
+\NormalTok{        attention\_weights }\OperatorTok{=}\NormalTok{ tf.reshape(attention\_weights, (}\OperatorTok{{-}}\DecValTok{1}\NormalTok{, ))}
+\NormalTok{        attention\_plot[t] }\OperatorTok{=}\NormalTok{ attention\_weights.numpy()}
+
+\NormalTok{        predicted\_id }\OperatorTok{=}\NormalTok{ tf.argmax(predictions[}\DecValTok{0}\NormalTok{]).numpy()}
+
+\NormalTok{        result }\OperatorTok{+=}\NormalTok{ targ\_lang.index\_word[predicted\_id] }\OperatorTok{+} \StringTok{\textquotesingle{} \textquotesingle{}}
+
+        \ControlFlowTok{if}\NormalTok{ targ\_lang.index\_word[predicted\_id] }\OperatorTok{==} \StringTok{\textquotesingle{}\textless{}end\textgreater{}\textquotesingle{}}\NormalTok{:}
+            \ControlFlowTok{return}\NormalTok{ result, sentence, attention\_plot}
+
+        \CommentTok{\# 预测的 ID 被输送回模型}
+\NormalTok{        dec\_input }\OperatorTok{=}\NormalTok{ tf.expand\_dims([predicted\_id], }\DecValTok{0}\NormalTok{)}
+
+    \ControlFlowTok{return}\NormalTok{ result, sentence, attention\_plot}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{header-n152}{%
+\subsubsection{3.5 训练结果测试}\label{header-n152}}
+
+我们定义一个translate方法来实现翻译:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ translate(sentence):}
+\NormalTok{    result, sentence, attention\_plot }\OperatorTok{=}\NormalTok{ evaluate(sentence)}
+
+    \BuiltInTok{print}\NormalTok{(}\StringTok{\textquotesingle{}Input: }\SpecialCharTok{\%s}\StringTok{\textquotesingle{}} \OperatorTok{\%}\NormalTok{ (sentence))}
+    \BuiltInTok{print}\NormalTok{(}\StringTok{\textquotesingle{}Predicted translation: }\SpecialCharTok{\{\}}\StringTok{\textquotesingle{}}\NormalTok{.}\BuiltInTok{format}\NormalTok{(result))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics{https://gitee.com/in_the_wind_ghx/markdownImageUpload/raw/master/img/testResult3.png}
+\caption{}
+\end{figure}
+
+图13.正确的测试-1
+
+\begin{figure}
+\centering
+\includegraphics{https://gitee.com/in_the_wind_ghx/markdownImageUpload/raw/master/img/testResult4.png}
+\caption{}
+\end{figure}
+
+图14.正确的测试-2
+
+\begin{figure}
+\centering
+\includegraphics{https://gitee.com/in_the_wind_ghx/markdownImageUpload/raw/master/img/testResult5.png}
+\caption{}
+\end{figure}
+
+图15.正确的测试-3
+
+\begin{figure}
+\centering
+\includegraphics{https://gitee.com/in_the_wind_ghx/markdownImageUpload/raw/master/img/testResult6.png}
+\caption{}
+\end{figure}
+
+图16.正确的测试-4
+
+\begin{figure}
+\centering
+\includegraphics{https://gitee.com/in_the_wind_ghx/markdownImageUpload/raw/master/img/testResult7.png}
+\caption{}
+\end{figure}
+
+图17.错误的测试-1
+
+\begin{figure}
+\centering
+\includegraphics{https://gitee.com/in_the_wind_ghx/markdownImageUpload/raw/master/img/testResult8.png}
+\caption{}
+\end{figure}
+
+图18.错误的测试-2
+
+\begin{figure}
+\centering
+\includegraphics{https://gitee.com/in_the_wind_ghx/markdownImageUpload/raw/master/img/seq2seqWithAttention.png}
+\caption{}
+\end{figure}
+
+图19.错误的测试-3
+
+我们可以看到，对于一些比较简单的、不是太长也不是只有单个词的时候，还是有一定的翻译效果，这说明其也确实学到了一些东西；但是显然，这个还不够准确，对于单个的词和比较长的句子的翻译效果很差。不过，我认为这也与我使用的数据集很小有关。
+
+以上，就是本次 seq2seq with attention 英中翻译的全部内容。
+
+\end{document}
