@@ -36,7 +36,7 @@
 
 下图是传统的RNN结构
 
-![RNN](D:\Desktop\进展汇报\创2期末文档\RNN.jpg)
+![RNN](D:%5CDesktop%5C%E8%BF%9B%E5%B1%95%E6%B1%87%E6%8A%A5%5C%E5%88%9B2%E6%9C%9F%E6%9C%AB%E6%96%87%E6%A1%A3%5CRNN.jpg)
 
 <center style="font-size:14px;color:#C0C0C0;text-decoration:underline">图1.传统RNN</center> 
 
