@@ -36,7 +36,7 @@
 
 下图是传统的RNN结构
 
-![RNN](D:%5CDesktop%5C%E8%BF%9B%E5%B1%95%E6%B1%87%E6%8A%A5%5C%E5%88%9B2%E6%9C%9F%E6%9C%AB%E6%96%87%E6%A1%A3%5CRNN.jpg)
+![RNN](https://gitee.com/in_the_wind_ghx/markdownImageUpload/raw/master/img/RNN.png)
 
 <center style="font-size:14px;color:#C0C0C0;text-decoration:underline">图1.传统RNN</center> 
 
